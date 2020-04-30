@@ -1,0 +1,178 @@
+# Copyright (C) 2019 Tecbound
+# This file is distributed under the .
+msgid ""
+msgstr ""
+"Project-Id-Version: Thanatos Tecbound Uer Theme\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/"
+"thanatos-tecbound-uer-theme\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2019-12-18 18:15-0430\n"
+"PO-Revision-Date: 2019-12-30 19:32-0430\n"
+"X-Generator: Poedit 2.2.4\n"
+"X-Domain: thanatos-tecbound-uer-theme\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es_ES\n"
+
+#. Theme Name of the theme
+msgid "Tecbound Kronos"
+msgstr ""
+
+#. Description of the theme
+msgid "New Tecbound Wp Desing"
+msgstr "Nuevo diseño del tema WP Tecbound"
+
+#. Author of the theme
+msgid "Tecbound"
+msgstr ""
+
+#. Author URI of the theme
+msgid "http://tecbound.com/"
+msgstr ""
+
+#. components_templates\components\last_blog_posts_template.php Last Posts Section Title
+msgid "<h3>Latest <strong>Publications</strong></h3>"
+msgstr "<h3><strong>Publicaciones</strong> más recientes</h3>"
+
+#. footer.php Copyright
+msgid "Copyright ©2019 All rights reserved"
+msgstr "Derechos de autor ©2019 Todos los derechos reservados"
+
+#. footer.php Copyright developed
+msgid "Powered by Tecbound"
+msgstr "Desarrollado por Tecbound"
+
+#. footer.php Term and Conditions
+msgid "Term and Conditions"
+msgstr "Términos y Condiciones"
+
+#. footer.php Privacy Policy
+msgid "Privacy Policy"
+msgstr "Política de privacidad"
+
+#. fileNotDefined Not found Records
+msgid "Sorry, we did not find any results, try again later..."
+msgstr ""
+"Lo sentimos, no encontramos ningún resultado, vuelva a "
+"intentarlo más tarde..."
+
+#. components_templates\components\post_search.php Input placeholder
+msgid "Search on the blog..."
+msgstr "Buscar en el blog..."
+
+msgid "Search on the page..."
+msgstr "Buscar en la pagina..."
+
+#. components_templates\components\post_search.php Input aria-label
+msgid "Please enter the keywords"
+msgstr "Introduzca las palabras clave"
+
+#. 404.php Main Text
+msgid "Something went wrong"
+msgstr "Algo ha salido mal"
+
+#. 404.php Link Texts
+msgid "Back to Home"
+msgstr "Volver al Inicio"
+
+#. Standar text Read More
+msgid "Read More"
+msgstr "Leer más"
+
+#. Standar text Date
+msgid "Date"
+msgstr "Fecha"
+
+#. Standar text Date
+msgid "Start Date"
+msgstr "Inicia"
+
+#. Standar text Date
+msgid "End Date"
+msgstr "Culmina"
+
+#. Custom Post Types Labels
+msgid "News"
+msgstr "Noticias"
+
+msgid "Campaings"
+msgstr "Campañas"
+
+msgid "Alliances"
+msgstr "Alianzas"
+
+msgid "Other Grants"
+msgstr "Otras Convocatorias"
+
+msgid "Trainings"
+msgstr "Capacitaciones"
+
+msgid "Celebrities"
+msgstr "Personalidades"
+
+#. Custom Post Types Descriptions
+msgid "Here all the main News of (Unidos en Red) are published"
+msgstr "Aquí se publican todas las principales noticias de (Unidos en Red)"
+
+msgid "Here all the main Campaings of (Unidos en Red) are published"
+msgstr "Aquí se publican todas las principales Campañas de (Unidos en Red)"
+
+msgid "Here all the main Alliances of (Unidos en Red) are published"
+msgstr "Aquí se publican todas las principales Alianzas de (Unidos en Red)"
+
+msgid "Here all the main Other Grants of (Unidos en Red) are published"
+msgstr "Aquí se publican todas las principales Otras Convocatorias de (Unidos en Red)"
+
+msgid "Here all the main Trainings of (Unidos en Red) are published"
+msgstr "Aquí se publican todas las principales Capacitaciones de (Unidos en Red)"
+
+msgid "Here all the main Celebrities of (Unidos en Red) are published"
+msgstr "Aquí se publican todas las principales Personalidades de (Unidos en Red)"
+
+#. Custom Donate msg
+msgid "Donate Now!"
+msgstr "¡Dona Ahora!"
+
+#. Label for realted slides
+msgid "Featured Posts"
+msgstr "Publicaciones destacadas"
+
+#. Organization Themes
+msgid "Initiative search engine"
+msgstr "Buscador de iniciativas"
+
+msgid "Region or country"
+msgstr "Región o país"
+
+msgid "Thematic area"
+msgstr "Área temática"
+
+msgid "Sustainable development goals"
+msgstr "Metas de desarrollo sostenible"
+
+msgid "Keyword or name"
+msgstr "Palabra clave o nombre"
+
+msgid "ONG"
+msgstr "ONG"
+
+msgid "Enterprise"
+msgstr "Empresa"
+
+msgid "Agent Type"
+msgstr "Tipo de agente"
+
+msgid "Name"
+msgstr "Nombre"
+
+msgid "Country of origin"
+msgstr "País de origen"
+
+msgid "Geographical focus"
+msgstr "Enfoque geográfico"
+
+msgid "URL"
+msgstr "URL"

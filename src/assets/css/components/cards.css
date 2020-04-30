@@ -1,0 +1,15 @@
+.daim-social-networks ul {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.daim-social-networks ul li {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+/*# sourceMappingURL=cards.css.map */

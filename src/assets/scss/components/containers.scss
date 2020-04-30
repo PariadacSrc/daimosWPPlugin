@@ -1,0 +1,140 @@
+//Containers
+@import "../components/mixins.scss";
+$colCount : 12;
+//-main container
+.daim-container{
+	display: block;
+	padding: 0px 15px;
+	width: 95%;
+	margin: auto;
+	@include mQW('min',1300px){
+		max-width: 1150px;
+	}
+}
+
+//-flex-boxes
+@mixin flexCols($indirect){
+	@for $i from 1 through $colCount{
+		
+		@if($indirect==0){
+			&-#{$i}{
+				flex-grow: 0;
+				flex-basis: ((100% * $i )/$colCount);
+			}
+		}
+		
+		@if($indirect==1){
+			&-#{$i}>div{
+				flex-grow: 0;
+				flex-basis: (100% / $i);
+			}
+		}
+	}
+}
+
+.daim-flx-row{
+	display: flex;
+	width: auto;
+	flex-wrap: wrap;
+	@include clearfix;
+	margin: 0px -15px;
+
+	&.f-alg{
+		&-center{align-items: center;}
+		&-start{align-items: flex-start;}
+		&-end{align-items: flex-end;}
+	}
+
+	&.f-jst{
+		&-center{justify-content: center;}
+		&-space-btwn{justify-content: space-between;}
+		&-space-arnd{justify-content: space-around;}
+	}
+
+	&.f-reverse{
+		flex-direction: row-reverse;
+	}
+
+	&>*{
+		flex-grow: 0;
+		flex-shrink: 1;
+		padding: 0px 15px;
+		margin-bottom: 15px;
+		@include clearfix;
+	}
+
+	*.flx-col{
+
+		flex-basis: 0;
+		flex-grow: 1;
+
+		@include flexCols(0);
+
+		&-md{
+			@include mQMD(){ @include flexCols(0);}
+		}
+
+		&-sm{
+			@include mQSM(){ @include flexCols(0);}
+		}
+
+		&-xs{
+			@include mQXS(){ @include flexCols(0);}
+		}
+
+	}
+
+	&.flx-cols{
+
+		flex-basis: 0;
+		flex-grow: 1;
+
+		@include flexCols(1);
+
+		&-md{
+			@include mQMD(){ @include flexCols(1);}
+		}
+
+		&-sm{
+			@include mQSM(){ @include flexCols(1);}
+		}
+
+		&-xs{
+			@include mQXS(){ @include flexCols(1);}
+		}
+
+	}
+
+}
+
+//-grid-blocks
+@mixin block-grid($col,$mrg){
+	float: left;
+	margin-right: $mrg;
+	margin-left: $mrg;
+	width: ( ( 100% - (($col - 1) * $mrg) ) / $col );
+	&:nth-child(#{$col}n){
+		margin-right: 0;
+	}
+}
+
+.daim-block-row{
+	display: block;
+	width: 100%;
+	@include clearfix;
+
+	.block-col{
+		@for $i from 1 through $colCount{
+			&s-#{$i}>div{
+				@include block-grid($i,2%);
+			}
+		}
+	}
+}
+
+
+.daim-grid-content{
+	.daim-wrap-cont{
+		height: 100%;
+	}
+}
