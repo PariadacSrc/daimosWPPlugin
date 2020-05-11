@@ -64,7 +64,10 @@ abstract class shortCodeView{
 		];
 
 		$glob = $this->jsComposerMapCode();
+		$glob['name'] = '<i class="daimos-font daimos-logo"></i> '.$glob['name'];
+
 		if (isset($glob['params'])){ $glob['params'] = array_merge($glob['params'],$settings);}
+		if(!isset($glob['icon'])){$glob['icon']='daim-vc-logo';}
 
 		return $glob;
 

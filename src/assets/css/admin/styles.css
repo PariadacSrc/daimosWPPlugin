@@ -1,0 +1,24 @@
+body {
+  font-size: 12pt;
+}
+
+*, *::before, *::after {
+  box-sizing: initial;
+}
+
+.daim-glob-frame * {
+  box-sizing: border-box;
+}
+.daim-glob-frame *::before, .daim-glob-frame *::after {
+  box-sizing: border-box;
+}
+
+.daim-vc-logo {
+  background-image: url("../../img/daim-logo.png") !important;
+}
+
+.wp-menu-image > img {
+  max-width: 30px;
+}
+
+/*# sourceMappingURL=styles.css.map */
