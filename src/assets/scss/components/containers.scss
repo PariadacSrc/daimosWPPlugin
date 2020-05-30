@@ -19,14 +19,14 @@ $colCount : 12;
 		@if($indirect==0){
 			&-#{$i}{
 				flex-grow: 0;
-				flex-basis: ((100% * $i )/$colCount);
+				width: ((100% * $i )/$colCount);
 			}
 		}
 		
 		@if($indirect==1){
 			&-#{$i}>div{
 				flex-grow: 0;
-				flex-basis: (100% / $i);
+				width: (100% / $i);
 			}
 		}
 	}
@@ -136,5 +136,16 @@ $colCount : 12;
 .daim-grid-content{
 	.daim-wrap-cont{
 		height: 100%;
+	}
+}
+
+//-img container
+
+.daim-img-container{
+	&>img{
+		object-fit: cover;
+	    width: 100%;
+	    height: 100%;
+		max-width: inherit;
 	}
 }

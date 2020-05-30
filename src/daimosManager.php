@@ -97,7 +97,7 @@ if(!class_exists('DaimosManager')):
 		private function setup_constants() {
 
 			// Plugin Version.
-			if ( ! defined( 'DAIM_PLUG_VERSION' ) ) { define( 'DAIM_PLUG_VERSION', '1.000.0000' ); }
+			if ( ! defined( 'DAIM_PLUG_VERSION' ) ) { define( 'DAIM_PLUG_VERSION', '1.000.0012' ); }
 			
 			// Plugin Root File.
 			if ( ! defined( 'DAIM_PLUGIN_FILE' ) ) { define( 'DAIM_PLUGIN_FILE', __FILE__ );}

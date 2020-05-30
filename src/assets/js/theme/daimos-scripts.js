@@ -1,3 +1,4 @@
+/*==================================Core Styles Methods*/
 const mainJsStyleSheets = (attr)=>{
 	var style = document.createElement("style");
 
@@ -23,6 +24,41 @@ const addCSSRule = (sheet, selector, rules, index)=>{
 	}
 }
 
+/*==================================Sliders Methods*/
+const settingsSliderGeneric=(item)=>{
+	return {
+	  dots: false,
+	  adaptiveHeight:true,
+	  infinite: true,
+	  autoplay:false,
+	  prevArrow:'<i class="daim-slider-a-left fa fa-angle-left slick-arrow"></i>',
+	  nextArrow:'<i class="daim-slider-a-right fa fa-angle-right slick-arrow"></i>',
+	  slidesToShow: parseInt(item.dataset.showitems),
+	  responsive: [
+	    {
+	      breakpoint: 1025,
+	      settings: {
+	        slidesToShow: 1,
+	        arrows:false
+	      }
+	    }
+	  ]
+	}
+}
+
+const getCustomSettings=(obj)=>{
+	const {customSettings} = obj.dataset;
+	if(customSettings){
+		try{ 
+			return eval(customSettings)();
+		}catch (e){
+			return {};
+		}
+	}
+
+	return {};
+}
+
 const initSliderGeneric=($start=true)=>{
 
 	document.querySelectorAll('.daim-slider-standar').forEach((item,index)=>{
@@ -33,24 +69,14 @@ const initSliderGeneric=($start=true)=>{
 		item.dataset.sliderHashKey = slideHash;
 
 		if ($start) {
-			jQuery(item).slick({
-			  dots: false,
-			  adaptiveHeight:true,
-			  infinite: true,
-			  autoplay:false,
-			  prevArrow:'<i class="daim-slider-a-left fa fa-angle-left slick-arrow"></i>',
-			  nextArrow:'<i class="daim-slider-a-right fa fa-angle-right slick-arrow"></i>',
-			  slidesToShow: parseInt(item.dataset.showitems),
-			  responsive: [
-			    {
-			      breakpoint: 1025,
-			      settings: {
-			        slidesToShow: 1,
-			        arrows:false
-			      }
-			    }
-			  ]
-			});
+
+			//Merge the default theme settings whit custom developer theme settings
+			const newSlide = {
+				...settingsSliderGeneric(item),
+				...getCustomSettings(item)
+			}
+
+			jQuery(item).slick(newSlide);
 
 			//Validation
 			var{diffitems,postcount}=item.dataset;
@@ -127,6 +153,29 @@ const initSliderBondSlides=($start=true)=>{
 	});
 }
 
+const setBindArrows=()=>{
+
+    document.querySelectorAll(".daim-bind-arrow").forEach((arrow)=>{
+
+        arrow.addEventListener('click',(e)=>{
+            e.preventDefault();
+
+            let {bindSlider,direction} = arrow.dataset;
+
+            switch(direction) {
+                case 'left':
+                    jQuery(bindSlider).slick('slickPrev');
+                    break;
+                case 'right':
+                    jQuery(bindSlider).slick('slickNext');
+                    break;
+            }
+            
+        });
+
+    });
+}
+
 const quickSortSlides=(slider)=>{
 
 	if(slider.length<1){
@@ -189,7 +238,6 @@ const valSliderCountItems=(diff,countItems)=>{
 	return (diff && countItems<0)?true:false;
 }
 
-
 const mediaOnePageSlider =(action='slickAdd')=>{
 
 	document.querySelectorAll('.one-page-slider').forEach((item,index)=>{
@@ -215,6 +263,7 @@ const mediaOnePageSlider =(action='slickAdd')=>{
 	});
 }
 
+/*==================================Elements Styles*/
 const imgPostHeight=()=>{
 	document.querySelectorAll('.single-entry-header .post-image').forEach((element,index)=>{
 
@@ -226,6 +275,22 @@ const imgPostHeight=()=>{
 
 	});
 }
+
+
+/*==================================NavBar Actions*/
+const setCollapseBtns =()=>{
+
+	document.querySelectorAll('.daim-collapse-nav').forEach((block)=>{
+
+		const collpsBtn = block.querySelector('.collapse-btn>button');
+
+		collpsBtn.addEventListener('click',(e)=>{
+			e.preventDefault();
+			block.classList.toggle('d-show-collapse');
+		});
+	});
+}
+
 
 //**Global Vars
 //Media Sheet
@@ -241,6 +306,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 	imgPostHeight();
 
 	//Events
+	setCollapseBtns();
 
 	//_Media Query List
 	window.matchMedia('(min-width: 1025px)').addListener((mql)=>{
@@ -253,6 +319,4 @@ document.addEventListener('DOMContentLoaded',()=>{
 			//mediaOnePageSlider('slickRemove');
 		}
 	});
-
-
 });

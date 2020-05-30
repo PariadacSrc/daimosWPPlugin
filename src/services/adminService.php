@@ -17,8 +17,8 @@ class adminService{
 				'manage_options',
 				'daimos_manager',
 				array($this,'mainIndex'),
-				DAIM_PLUGIN_URL.'/assets/img/admin/logo.png',
-				3
+				DAIM_PLUGIN_URL.'assets/img/admin/logo.png',
+				5
 			);
 		});
 

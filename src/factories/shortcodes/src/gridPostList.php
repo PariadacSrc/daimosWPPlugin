@@ -116,6 +116,18 @@ class gridPostList extends shortCodeView{
                 	'value' 	=> '1'
 				),
 				"group" => "<i class='fa fa-cogs'></i> " . __('Link Settings' ,DAIM_PLUG_DOMAIN)
+			),
+			array(
+				'type'       => 'textfield',
+				'heading'    => __('Custom Link',DAIM_PLUG_DOMAIN),
+				'param_name' => 'custom_url_link',
+				'value'      => '',
+				'dependency' => array(
+					'element' 	=> 'include_link',
+                	'value' 	=> '1'
+				),
+				'description'=> __('This field indicates the meta field that contains the publication as a personalized link, if left empty it will use the publication default link',DAIM_PLUG_DOMAIN),
+				"group" => "<i class='fa fa-cogs'></i> " . __('Link Settings' ,DAIM_PLUG_DOMAIN)
 			)
 		);
 	}
@@ -141,6 +153,7 @@ class gridPostList extends shortCodeView{
 				'value'      => array(
 					__('Default',DAIM_PLUG_DOMAIN) 	=> 'default',
 					__('User',DAIM_PLUG_DOMAIN)   => 'user',
+					__('Featured Picture',DAIM_PLUG_DOMAIN)   => 'picture',
 				),
 				'std'        => 'generic',
 				"group" => "<i class='fa fa-cogs'></i> " . __('Template Settings' ,DAIM_PLUG_DOMAIN)

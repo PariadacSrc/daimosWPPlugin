@@ -25,6 +25,7 @@ final class packageAutoload{
 
 		//Helpers
 		require_once $this->route.'/helpers/mainHelper.php';
+		require_once $this->route.'/helpers/debugHelper.php';
 
 		//Services
 		$this->loadDinamic($this->route.'/services');
