@@ -4,7 +4,7 @@
 *@package Daimos Project Library Wordpress Theme
 */
 
-class Footers extends postTypeView{
+class Footers extends \Daim\Factories\postTypeView{
 
 	function __construct(){
 		$this->setPrefix(DAIM_PRFX.'footers');

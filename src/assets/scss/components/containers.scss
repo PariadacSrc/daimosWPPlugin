@@ -15,18 +15,18 @@ $colCount : 12;
 //-flex-boxes
 @mixin flexCols($indirect){
 	@for $i from 1 through $colCount{
+
+		@if($indirect==1){
+			&-#{$i}>*{
+				flex-grow: 0;
+				width: (100% / $i);
+			}
+		}
 		
 		@if($indirect==0){
 			&-#{$i}{
 				flex-grow: 0;
 				width: ((100% * $i )/$colCount);
-			}
-		}
-		
-		@if($indirect==1){
-			&-#{$i}>div{
-				flex-grow: 0;
-				width: (100% / $i);
 			}
 		}
 	}
@@ -63,6 +63,27 @@ $colCount : 12;
 		@include clearfix;
 	}
 
+	&.flx-cols{
+
+		flex-basis: 0;
+		flex-grow: 1;
+
+		@include flexCols(1);
+
+		&-md{
+			@include mQMD(){ @include flexCols(1);}
+		}
+
+		&-sm{
+			@include mQSM(){ @include flexCols(1);}
+		}
+
+		&-xs{
+			@include mQXS(){ @include flexCols(1);}
+		}
+
+	}
+
 	*.flx-col{
 
 		flex-basis: 0;
@@ -84,26 +105,7 @@ $colCount : 12;
 
 	}
 
-	&.flx-cols{
-
-		flex-basis: 0;
-		flex-grow: 1;
-
-		@include flexCols(1);
-
-		&-md{
-			@include mQMD(){ @include flexCols(1);}
-		}
-
-		&-sm{
-			@include mQSM(){ @include flexCols(1);}
-		}
-
-		&-xs{
-			@include mQXS(){ @include flexCols(1);}
-		}
-
-	}
+	
 
 }
 

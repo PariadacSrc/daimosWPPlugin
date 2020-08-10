@@ -1,4 +1,4 @@
-<?php  
+<?php  namespace Daim\Factories;
 
 /**
 *@package Daimos Project Library Wordpress Theme
@@ -66,13 +66,13 @@ abstract class metaboxView{
 	public function renderPostMeta($id,$type){
 
 		global $wp, $post;
-
+		
 		$metaVal = get_post_meta($id,$this->getPrefix());
 
 		if(count($metaVal)>0){
 
 			$args = ['p'=>intval($metaVal[0]),'post_type'=>$type];
-			$query = new WP_Query( $args );
+			$query = new \WP_Query( $args );
 
 			if ( $query->have_posts() ) {
                     
@@ -80,7 +80,7 @@ abstract class metaboxView{
                 	$query->the_post();
                     $post = get_post();
 
-                	mainHelper::getRenderVCStyles($post->ID);
+                	\Daim\Helpers\mainHelper::getRenderVCStyles($post->ID);
 					echo do_shortcode($post->post_content);
 
                 }

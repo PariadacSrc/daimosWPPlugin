@@ -4,7 +4,7 @@
 *@package Daimos Project Library Wordpress Theme
 */
 
-class rubikFont extends fontsView{
+class rubikFont extends \Daim\Factories\fontsView{
 
 	function __construct(){
 		$this->setSettings(

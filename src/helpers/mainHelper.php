@@ -1,12 +1,14 @@
-<?php 
+<?php namespace Daim\Helpers;
 
 /**
 *@package Daimos Project Library Wordpress Theme
 */
 
+use WP_Query;
+
 class mainHelper{
 
-	public static function filesCalls($dir,$action){
+	public static function filesCalls($dir,$action,$extension='php',...$params){
 
 		if (is_dir($dir) && file_exists($dir)) {
 
@@ -14,9 +16,9 @@ class mainHelper{
 
 		        while (($file = readdir($dh)) !== false) {
 
-		            if (strrpos($file, ".php") !== FALSE) {
+		            if (strrpos($file, ".".$extension) !== FALSE) {
 
-		                self::callMethod($action, $dir, $file);
+		                self::callMethod($action, $dir, $file,...$params);
 
 		            }
 		        }
@@ -25,6 +27,7 @@ class mainHelper{
 		    }
 		}
 	}
+
 	public static function callMethod($action,...$params){
 
 		if(is_array($action)){
@@ -120,6 +123,92 @@ class mainHelper{
 			echo '<style type="text/css" data-type="vc_shortcodes-custom-css">'.$styles.'</style>';
 		}
 
+	}
+
+	public static function countHash(){
+		global $daimCountHash;
+
+		$daimCountHash = (isset($daimCountHash))? ($daimCountHash+1):1;
+		return $daimCountHash;
+	}
+
+	public static function getAllSitePages(){
+
+		$r_query= new WP_Query(array(
+			'post_type' => 'page',
+		    'orderby'   => 'title',
+		    'posts_per_page' => -1,
+		    'post_status' => array('publish','private')    
+		));
+		$return = array();
+
+		foreach ($r_query->posts as $key => $value) {
+			$return[$value->ID]=$value->post_title;
+		}
+		return $return;
+
+	}
+
+	public static function getAllCustomPostType($type='post'){
+
+		$r_query= new WP_Query(array(
+			'post_type' => $type,
+		    'orderby'   => 'title',
+		    'posts_per_page' => -1,    
+		));
+		$return = array();
+
+		foreach ($r_query->posts as $key => $value) {
+			$return[$value->ID]=$value->post_title;
+		}
+		return $return;
+
+	}
+
+	public static function buildStandarSelect($field,$data,$options,$default=null,$attributes=[]){
+
+		$default = (!isset($default))?[__('Select an option...')]:$default;
+		$dkey = array_keys($default)[0];
+
+		ob_start();
+
+			?>
+				<select name="<?php echo $field; ?>"
+					<?php foreach ($attributes as $attrk => $attrv) { echo $attrk.'="'.$attrv.'" '; } ?>
+				>
+					<option value="<?php echo $dkey; ?>"><?php echo $default[$dkey]; ?></option>
+					<?php foreach ($options as  $key => $value): ?>
+						<option value="<?php echo $key ?>" <?php echo ($data==$key)?'selected="select"':''; ?> ><?php echo $value ?></option>
+					<?php endforeach; ?>
+				</select>
+			<?php
+
+		$return = ob_get_contents();
+		ob_end_clean();
+
+		return $return;
+	}
+
+
+	public static function getDefaultPicture($list,$key,$basedir='',$defaultBg=''){
+
+		if(isset($list[$key])){
+			return ( strlen(trim($list[$key]))>0 )?$basedir.$list[$key]:$defaultBg;
+		}
+
+		return $defaultBg;
+
+	}
+
+	public static function getVCTermsList($term,$settings){
+		$menus = get_terms( $term, $settings );
+
+		$return = array();
+
+		foreach ($menus as $key => $value) {
+			$return[$value->name]=$value->term_id;
+		}
+		return $return;
 	}
 
 }

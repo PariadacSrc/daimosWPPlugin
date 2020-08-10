@@ -46,11 +46,11 @@ const settingsSliderGeneric=(item)=>{
 	}
 }
 
-const getCustomSettings=(obj)=>{
-	const {customSettings} = obj.dataset;
-	if(customSettings){
+const callCustomAction=(obj,call,...params)=>{
+	const action = obj.dataset[call];
+	if(action){
 		try{ 
-			return eval(customSettings)();
+			return eval(action)(...params);
 		}catch (e){
 			return {};
 		}
@@ -73,7 +73,7 @@ const initSliderGeneric=($start=true)=>{
 			//Merge the default theme settings whit custom developer theme settings
 			const newSlide = {
 				...settingsSliderGeneric(item),
-				...getCustomSettings(item)
+				...callCustomAction(item,'customSettings')
 			}
 
 			jQuery(item).slick(newSlide);
@@ -88,6 +88,8 @@ const initSliderGeneric=($start=true)=>{
 			//Fix Height Element
 			resizeSliderHeightBox(item,`.${slideHash} .daim-slide.daim-tmp-generic>div>div:nth-child(2)>div`,sheetMediaDesktop);
 			resizeSliderFullBox(item,`.${slideHash} .daim-tmp-featured_picture .daim-bg-img`,sheetMediaDesktop);
+			callCustomAction(item,'customActions',item,slideHash);
+
 		}
 
 	});
@@ -291,6 +293,12 @@ const setCollapseBtns =()=>{
 	});
 }
 
+const dispatcherDaimEvents=()=>{
+	var s = document.createElement( 'script' );
+	s.setAttribute( 'src', `${daimSettings.root}assets/js/theme/daimos-custom-dispatcher.js` );
+	document.body.appendChild( s );
+}
+
 
 //**Global Vars
 //Media Sheet
@@ -299,6 +307,7 @@ const sheetMediaMovile = mainJsStyleSheets({media:'(max-width: 728px)'});
 
 document.addEventListener('DOMContentLoaded',()=>{
 
+	dispatcherDaimEvents();
 	initSliderGeneric();
 	initSliderBondSlides();
 

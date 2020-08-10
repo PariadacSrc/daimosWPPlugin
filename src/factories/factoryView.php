@@ -1,5 +1,6 @@
-<?php 
+<?php namespace Daim\Factories;
 
+use Daim\Helpers\mainHelper;
 /**
 *@package Daimos Project Library Wordpress Theme
 */
@@ -25,7 +26,7 @@ abstract class factoryView{
 	
 	public function registerAction($dir, $file){
 		require_once $dir.'/'.$file;
-		$class = basename($file,".php");
+		$class = '\\'.basename($file,".php");
 		$obj = new $class();
 
 		//Setting List

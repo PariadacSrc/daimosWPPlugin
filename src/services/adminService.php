@@ -1,4 +1,4 @@
-<?php 
+<?php namespace Daim\Services;
 
 /**
 *@package Daimos Project Library Wordpress Theme

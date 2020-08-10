@@ -1,4 +1,6 @@
-<?php 
+<?php namespace Daim\Factories;
+
+use Daim\Factories\factoryView;
 
 /**
 *@package Daimos Project Library Wordpress Theme

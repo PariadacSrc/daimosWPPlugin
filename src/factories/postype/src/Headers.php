@@ -4,7 +4,7 @@
 *@package Daimos Project Library Wordpress Theme
 */
 
-class Headers extends postTypeView{
+class Headers extends \Daim\Factories\postTypeView{
 
 	function __construct(){
 		$this->setPrefix(DAIM_PRFX.'headers');

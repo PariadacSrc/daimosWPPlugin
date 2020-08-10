@@ -1,10 +1,11 @@
 <?php 
 
+use Daim\Helpers\mainHelper;
 /**
 *@package Daimos Project Library Wordpress Theme
 */
 
-class menuBuilder extends shortCodeView{
+class menuBuilder extends \Daim\Factories\shortCodeView{
 	
 	function __construct(){
 		$this->setCodeName(DAIM_PRFX.'menu_builder');
@@ -33,9 +34,7 @@ class menuBuilder extends shortCodeView{
 					'type'       => 'dropdown',
 					'heading'    => __('Select Menu',DAIM_PLUG_DOMAIN),
 					'param_name' => 'menu_id',
-					'value'      => array(
-						'0' => 'Default'
-					),
+					'value'      => array_merge( array('Default' =>'0' ),mainHelper::getVCTermsList('nav_menu', array( 'hide_empty' => true )) ),
 					'std'        => '0',
 					"group" => "<i class='fas fa-cogs'></i> " . __('Main Settings' ,DAIM_PLUG_DOMAIN)
 				),

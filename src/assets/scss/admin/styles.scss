@@ -1,7 +1,7 @@
+@import "../components/colors.scss";
 @import "../components/mixins.scss";
 
-//Wp Resets
-body{font-size: 12pt;}
+
 *, *::before, *::after {
     box-sizing: initial;
 }
@@ -14,6 +14,119 @@ body{font-size: 12pt;}
 	}
 }
 
+//Wp Menu Logo
 .daim-vc-logo{background-image: url('../../img/daim-logo.png')!important;}
-
 .wp-menu-image > img {max-width: 25px;}
+
+//Main Form Block
+
+.daimos-dash-container{
+
+	font-size: 12pt;
+	*{
+		font-family: arial;
+		box-sizing: border-box;
+		&::before,&::after{box-sizing: border-box;}
+	}
+
+	.daim-title-area{
+		&>h1{
+			padding: 15px 20px;
+			margin-bottom: 20px;
+			font-size: 2rem;
+			display: flex;
+			align-items: center;
+			color: #fff;
+			background-color: $clr-3;
+
+			.daimos-logo{
+				margin-right: 15px;
+				font-size: 1.5em;
+				color: $clr-4;
+			}
+		}
+	}
+
+	.daim-admin-form-group{
+		margin-bottom: 30px;
+		form{
+			margin: 0px;
+			&>h2{
+				margin: 0px;
+				padding: 15px 20px;
+				font-size: 1.2rem;
+				background-color: $clr-1;
+				color: #fff;
+			}
+
+			table{
+				position: relative;
+				display: flex;
+				flex-wrap: wrap;
+
+				tbody{
+					display: flex;
+					flex-wrap: wrap;
+					width: 100%;
+					padding: 20px;
+					background-color: #fff;
+
+					tr{
+						width: 100%;
+						display: flex;
+						flex-wrap: wrap;
+						justify-content: center;
+						align-items: center;
+						padding: 0px 15px;
+						margin-bottom: 15px;
+						th,td{
+							padding: 0px;
+	    					margin: 0px;
+						}
+
+						th{
+							width: 30%;
+							font-size: .8rem;
+						}
+						td{
+							width: 70%;
+							input[type="text"],select{
+								width: 100%;
+								max-width: 100%;
+								border-radius: 0px;
+								text-align: right;
+								border-color: $clr-3;
+							}
+						}
+					}
+				}
+			}
+
+			.sumit-container{
+				background-color: $clr-3;
+				overflow: hidden;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: flex-end;
+				padding: 15px 20px;
+				&>.submit{
+					margin: 0px;
+					padding: 0px;
+
+					input[type="submit"]{
+						background-color: $clr-4;
+						color: $clr-3;
+						border: 0px;
+						border-radius: 0px;
+
+						&:hover,:focus,:active{
+							box-shadow: none;
+							background-color: $clr-5;
+							color: $clr-4;
+						}
+					}
+				}
+			}
+		}
+	}
+}

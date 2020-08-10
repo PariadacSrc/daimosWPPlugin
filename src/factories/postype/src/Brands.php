@@ -4,7 +4,7 @@
 *@package Daimos Project Library Wordpress Theme
 */
 
-class Brands extends postTypeView{
+class Brands extends \Daim\Factories\postTypeView{
 
 	function __construct(){
 		$this->setPrefix(DAIM_PRFX.'brands');

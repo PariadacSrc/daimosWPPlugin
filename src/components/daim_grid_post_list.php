@@ -1,6 +1,8 @@
 <?php
-    $compname = DAIM_PRFX.'grid_post_list';
-    $args = apply_filters('prepare_'.$compname.'_query_args',[],$atts);
+    
+    use Daim\Helpers\mainHelper;
+
+    $args = apply_filters('prepare_'.$this->getCodeName().'_query_args',[],$atts);
 
     $query = new WP_Query( $args );
 
@@ -25,6 +27,7 @@
 
                         //Main Data
                         $gridContent = (object) array(
+                            'comp_prefix'       => $this->getCodeName(),
                             'comp_post_obj'     => $post,
                             'comp_template'     => $atts['main_template'],
                             'comp_post_title'   => $post->post_title,
@@ -38,7 +41,7 @@
                             )
                         );
 
-                        do_action(DAIM_PRFX.'grid_post_content',$gridContent);
+                        do_action(DAIM_PRFX.'internal_template',$gridContent);
 
                     }
                     

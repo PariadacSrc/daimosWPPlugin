@@ -1,10 +1,11 @@
 <?php 
 
+use Daim\Helpers\mainHelper;
 /**
 *@package Daimos Project Library Wordpress Theme
 */
 
-class includeWidgetsSidebars extends shortCodeView{
+class includeWidgetsSidebars extends \Daim\Factories\shortCodeView{
 	
 	function __construct(){
 		$this->setCodeName(DAIM_PRFX.'incl_widgets_sidebars');

@@ -1,15 +1,25 @@
 <?php 
 
+use Daim\Helpers\mainHelper;
 /**
 *@package Daimos Project Library Wordpress Theme
 */
 
-class gridPostList extends shortCodeView{
+class gridPostList extends \Daim\Factories\shortCodeView{
 	
 	function __construct(){
 		$this->setCodeName(DAIM_PRFX.'grid_post_list');
-		//Set Custom Filter prepare Query
-		$this->setQueryFilter(true);
+		$this->setTemplates(
+			array(
+				'default'=>array(
+					'vc_value' => __('Default',DAIM_PLUG_DOMAIN)
+				),
+				'user'=>array(
+					'vc_value' => __('User',DAIM_PLUG_DOMAIN)
+				)
+			)
+		);
+
 	}
 	
 	public function buildCode($atts,$content=null){
@@ -33,7 +43,6 @@ class gridPostList extends shortCodeView{
 		),$atts);
 
 		return $this->genericLayoutRender($atts,$this->getDefaultCompDir());
-
 	}
 
 	public function jsComposerMapCode(){
@@ -43,14 +52,14 @@ class gridPostList extends shortCodeView{
 			'category'	  => DAIM_SHORTCODE_REF,
 			'base'        => $this->getCodeName(),
 			'params'      => array_merge(
-				self::postSettings(),
-				self::linkSettings(),
-				self::templateSettings()
+				$this->postSettings(),
+				$this->linkSettings(),
+				$this->templateSettings()
 			)
 		);
 	}
 
-	public static function postSettings(){
+	public function postSettings(){
 		return array(
 			array(
 				'type'       => 'dropdown',
@@ -93,7 +102,7 @@ class gridPostList extends shortCodeView{
 		);
 	}
 
-	public static function linkSettings(){
+	public function linkSettings(){
 		return array(
 			array(
 				'type'       => 'dropdown',
@@ -116,23 +125,11 @@ class gridPostList extends shortCodeView{
                 	'value' 	=> '1'
 				),
 				"group" => "<i class='fa fa-cogs'></i> " . __('Link Settings' ,DAIM_PLUG_DOMAIN)
-			),
-			array(
-				'type'       => 'textfield',
-				'heading'    => __('Custom Link',DAIM_PLUG_DOMAIN),
-				'param_name' => 'custom_url_link',
-				'value'      => '',
-				'dependency' => array(
-					'element' 	=> 'include_link',
-                	'value' 	=> '1'
-				),
-				'description'=> __('This field indicates the meta field that contains the publication as a personalized link, if left empty it will use the publication default link',DAIM_PLUG_DOMAIN),
-				"group" => "<i class='fa fa-cogs'></i> " . __('Link Settings' ,DAIM_PLUG_DOMAIN)
 			)
 		);
 	}
 
-	public static function templateSettings(){
+	public function templateSettings(){
 		return array(
 			array(
 				'type'       => 'dropdown',
@@ -150,11 +147,7 @@ class gridPostList extends shortCodeView{
 				'heading'    => __('Template',DAIM_PLUG_DOMAIN),
 				'param_name' => 'main_template',
 				'description'=> __('The content of the templates may vary depending on the type of post selected',DAIM_PLUG_DOMAIN),
-				'value'      => array(
-					__('Default',DAIM_PLUG_DOMAIN) 	=> 'default',
-					__('User',DAIM_PLUG_DOMAIN)   => 'user',
-					__('Featured Picture',DAIM_PLUG_DOMAIN)   => 'picture',
-				),
+				'value'      => $this->VCTemplates(),
 				'std'        => 'generic',
 				"group" => "<i class='fa fa-cogs'></i> " . __('Template Settings' ,DAIM_PLUG_DOMAIN)
 			)

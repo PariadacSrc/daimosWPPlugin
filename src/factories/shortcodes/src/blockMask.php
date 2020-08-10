@@ -1,10 +1,11 @@
 <?php 
 
+use Daim\Helpers\mainHelper;
 /**
 *@package Daimos Project Library Wordpress Theme
 */
 
-class blockMask extends shortCodeView{
+class blockMask extends \Daim\Factories\shortCodeView{
 	
 	function __construct(){
 		$this->setCodeName(DAIM_PRFX.'block_mask');

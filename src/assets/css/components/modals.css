@@ -1,3 +1,70 @@
+.daim-modal-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0px;
+  z-index: 99999;
+  visibility: hidden;
+}
+.daim-modal-container.showmodal {
+  visibility: visible;
+}
+.daim-modal-container .d-modal-block {
+  background-color: #fff;
+  width: 80%;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  position: relative;
+}
+.daim-modal-container .d-modal-block:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.daim-modal-container .d-modal-block .hide-modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  cursor: pointer;
+}
+.daim-modal-container .d-modal-block .modal-body {
+  padding: 20px 30px;
+}
+.daim-modal-container .mdl-closer-handler {
+  z-index: -1;
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.daim-modal-container .d-mdl-header {
+  padding: 20px 30px 10px 30px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
+}
+.daim-modal-container .d-mdl-body {
+  padding: 30px;
+}
+.daim-modal-container .d-mdl-footer {
+  padding: 10px 30px 20px 30px;
+  box-shadow: 0px -1px 2px rgba(0, 0, 0, 0.4);
+}
 
+.handler-action-container {
+  width: 100%;
+}
+.handler-action-container h3 {
+  margin: 0px;
+}
 
 /*# sourceMappingURL=modals.css.map */

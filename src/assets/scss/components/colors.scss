@@ -1,0 +1,11 @@
+//Main Colors
+$clr-1:#734f9a;
+$clr-2:#965fd4;
+$clr-3:#1d1a2f;
+$clr-4:#8bd450;
+$clr-5:#3f6d4e;
+
+//-shadows
+$shadow-1:0px 2px 4px lighten($clr-5,0.5803921568627451);
+$shadow-2:0px 5px 10px lighten($clr-5, 0.5803921568627451);
+$shadow-3:0px 3px 5px lighten($clr-5, 0.3);

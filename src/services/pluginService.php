@@ -1,4 +1,4 @@
-<?php 
+<?php namespace Daim\Services;
 
 /**
 *@package Daimos Project Library Wordpress Theme
@@ -6,16 +6,18 @@
 
 class pluginService{
 
-	function __construct(){}
-
-	public function register(){
-
-		register_activation_hook( DAIM_PLUGIN_FILE, array($this,'activate') );
-		register_deactivation_hook(DAIM_PLUGIN_FILE, array($this,'deactivate'));
-
+	public static function register(){
+		register_activation_hook( DAIM_PLUGIN_BASE_FILE, array('\\Daim\\Services\\pluginService','activate') );
+		register_deactivation_hook(DAIM_PLUGIN_BASE_FILE, array('\\Daim\\Services\\pluginService','deactivate'));
 	}
 
-	public function activate(){ flush_rewrite_rules(); }
-	public function deactivate(){ flush_rewrite_rules(); }
+	public static function activate(){
+		do_action('on_activate_daimos');
+		flush_rewrite_rules(); 
+	}
+	public static function deactivate(){ 
+		do_action('on_deactivate_daimos');
+		flush_rewrite_rules(); 
+	}
 
 }

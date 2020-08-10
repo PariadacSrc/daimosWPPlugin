@@ -1,0 +1,11 @@
+{
+    "autoload": {
+        "psr-4": {
+            "Daim\\": "src/"
+        }
+    },
+    "require": {
+        "firebase/php-jwt": "^5.2",
+        "twilio/sdk": "^6.8"
+    }
+}

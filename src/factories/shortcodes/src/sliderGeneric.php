@@ -1,13 +1,24 @@
 <?php 
 
+use Daim\Helpers\mainHelper;
 /**
 *@package Daimos Project Library Wordpress Theme
 */
 
-class sliderGeneric extends shortCodeView{
+class sliderGeneric extends \Daim\Factories\shortCodeView{
 	
 	function __construct(){
 		$this->setCodeName(DAIM_PRFX.'slider_generic');
+		$this->setTemplates(
+			array(
+				'default'=>array(
+					'vc_value' => __('Generic',DAIM_PLUG_DOMAIN)
+				),
+				'featured_picture'=>array(
+					'vc_value' => __('Featured Picture',DAIM_PLUG_DOMAIN)
+				)
+			)
+		);
 	}
 	
 	public function buildCode($atts,$content=null){
@@ -25,12 +36,12 @@ class sliderGeneric extends shortCodeView{
 			/*Template Settings*/
 			'order'			=> 'DESC',
 			'show_item'		=> '1',
-			'main_template'	=> 'generic',
-			'content' 		=> $content
+			'main_template'	=> 'default',
+			'content' 		=> $content,
+			'class_css'  => ''
 		),$atts);
 
 		return $this->genericLayoutRender($atts,$this->getDefaultCompDir());
-
 	}
 	public function jsComposerMapCode(){
 		return array(
@@ -39,15 +50,14 @@ class sliderGeneric extends shortCodeView{
 			'category'	  => DAIM_SHORTCODE_REF,
 			'base'        => $this->getCodeName(),
 			'params'      => array_merge(
-				self::postSettings(),
-				self::linkSettings(),
-				self::templateSettings()
+				$this->postSettings(),
+				$this->linkSettings(),
+				$this->templateSettings()
 			)
 		);
 	}
 
-
-	public static function postSettings(){
+	public function postSettings(){
 		return array(
 			array(
 				'type'       => 'dropdown',
@@ -83,7 +93,7 @@ class sliderGeneric extends shortCodeView{
 		);
 	}
 
-	public static function linkSettings(){
+	public function linkSettings(){
 		return array(
 			array(
 				'type'       => 'dropdown',
@@ -138,7 +148,8 @@ class sliderGeneric extends shortCodeView{
 		);
 	}
 
-	public static function templateSettings(){
+	public function templateSettings(){
+
 		return array(
 			array(
 				'type'       => 'dropdown',
@@ -172,11 +183,8 @@ class sliderGeneric extends shortCodeView{
 				'heading'    => __('Template',DAIM_PLUG_DOMAIN),
 				'param_name' => 'main_template',
 				'description'=> __('The content of the templates may vary depending on the type of post selected',DAIM_PLUG_DOMAIN),
-				'value'      => array(
-					__('Generic',DAIM_PLUG_DOMAIN) 			=> 'generic',
-					__('Featured Picture',DAIM_PLUG_DOMAIN) => 'featured_picture',
-				),
-				'std'        => 'generic',
+				'value'      => $this->VCTemplates(),
+				'std'        => 'default',
 				"group" => "<i class='fa fa-cogs'></i> " . __('Template Settings' ,DAIM_PLUG_DOMAIN)
 			)
 		);
@@ -207,6 +215,6 @@ class sliderGeneric extends shortCodeView{
 		}else{
 			return false;
 		}
-
 	}
+
 }

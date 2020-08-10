@@ -1,0 +1,9 @@
+{
+  "name": "daimosproyect",
+  "version": "0.1.0",
+  "devDependencies": {
+    "vanillajs-datepicker": "^1.0.3",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
+  }
+}

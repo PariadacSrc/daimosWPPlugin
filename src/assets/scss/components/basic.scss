@@ -1,17 +1,4 @@
-//Theme Vars
-@use "sass:map";
-//-main colors
-$clr-1: rgb(149, 18, 117);
-$clr-2: rgb(248, 200, 63);
-$clr-3: rgb(112, 112, 112);
-$clr-4: rgb(238, 238, 238);
-$clr-5: rgb(0, 0, 0);
-$clr-6: rgb(255,255,255);
-
-//-shadows
-$shadow-1:0px 2px 4px lighten($clr-5,0.5803921568627451);
-$shadow-2:0px 5px 10px lighten($clr-5, 0.5803921568627451);
-$shadow-3:0px 3px 5px lighten($clr-5, 0.3);
+@import "colors.scss";
 
 //-fotns
 $font-sizes:(
@@ -38,19 +25,4 @@ $font-weights:(
 *::before,
 *::after {
   box-sizing: border-box;
-}
-
-body{ 
-	font-size: map.get($font-sizes, 'standar');
-	margin: 0; 
-}
-
-h1,h2,h3,h4,h5,h6{ margin-top: 0px; }
-
-a{ text-decoration: none; }
-
-:focus {outline: 0;}
-
-.daim-title{
-	text-align: center;
 }

@@ -1,4 +1,4 @@
-<?php global $daimosMainTheme;
+<?php global $Daimos;
 
 /**
 *@package Daimos Theme Manager
@@ -18,12 +18,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if(file_exists(dirname(__FILE__).'/autoload/packageAutoload.php')){
-	require_once(dirname(__FILE__).'/autoload/packageAutoload.php');
+// Plugin Root File.
+if ( ! defined( 'DAIM_PLUGIN_BASE_FILE' ) ) { define( 'DAIM_PLUGIN_BASE_FILE', __FILE__ );}
+
+function microtime_float(){
+	list($useg, $seg) = explode(" ", microtime());
+	return ((float)$useg + (float)$seg);
 }
 
-add_action( 'init', function(){
-	packageAutoload::instance();
-	$daimosMainTheme = DaimosManager::instance();
-}, 0 );
 
+
+if(file_exists(dirname(__FILE__).'/vendor/autoload.php')){
+	require_once(dirname(__FILE__).'/vendor/autoload.php');
+}
+
+\Daim\Services\pluginService::register();
+$Daimos = \Daim\DaimosManager::instance();

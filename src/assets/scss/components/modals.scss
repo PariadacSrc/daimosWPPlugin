@@ -1,0 +1,77 @@
+@import "../components/colors.scss";
+@import "../components/mixins.scss";
+
+.daim-modal-container{
+	position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    background-color: transparentize(#000,.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0px;
+    z-index: 99999;
+	visibility: hidden; 
+
+	&.showmodal{
+		visibility: visible;
+	}
+
+    .d-modal-block{
+    	background-color: #fff;
+		width: 80%;
+		max-width: 600px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		@include clearfix();
+		z-index: 10;
+		position: relative;
+
+		.hide-modal{
+			position: absolute;
+			top: 0;
+			right: 0;
+			padding: 10px;
+			cursor: pointer;
+		}
+
+		.modal-body{
+			padding: 20px 30px;
+		}
+    }
+
+    .mdl-closer-handler{
+		z-index: -1;
+		width: 100%;
+		position: absolute;
+		height: 100%;
+		top: 0;
+		left: 0;
+	}
+
+	.d-mdl-header{
+		padding: 20px 30px 10px 30px;
+		box-shadow: 0px 1px 2px transparentize(#000, .6);
+	}
+	
+	.d-mdl-body{
+		padding: 30px;
+	}
+
+	.d-mdl-footer{
+		padding: 10px 30px 20px 30px;
+		box-shadow: 0px -1px 2px transparentize(#000, .6);
+	}
+}
+
+
+.handler-action-container{
+	width: 100%;
+
+	h3{
+		margin: 0px;
+	}
+}

@@ -4,7 +4,7 @@
 *@package Daimos Project Library Wordpress Theme
 */
 
-class postHeader extends metaboxView{
+class postHeader extends \Daim\Factories\metaboxView{
 
 	function __construct(){
 		$this->setPostList(['post','page']);
@@ -24,7 +24,7 @@ class postHeader extends metaboxView{
 
 		$field_options = [(object)['ID'=>0,'post_name'=>_('Please select a header...')]];
 		$field_options = array_merge($field_options,get_posts(array('post_type'=>DAIM_PRFX.'headers')));
-		$field_options = array_map(['mainHelper','setMapOption'], $field_options);
+		$field_options = array_map(['\Daim\Helpers\mainHelper','setMapOption'], $field_options);
 
 		include (DAIM_PLUGIN_DIR.'templates/admin/components/standar_field.php');
 

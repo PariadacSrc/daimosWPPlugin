@@ -4,7 +4,7 @@
 *@package Daimos Project Library Wordpress Theme
 */
 
-class Services extends postTypeView{
+class Services extends \Daim\Factories\postTypeView{
 
 	function __construct(){
 		$this->setPrefix(DAIM_PRFX.'services');
